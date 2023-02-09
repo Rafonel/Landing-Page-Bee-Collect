@@ -178,3 +178,83 @@
   });
 
 })()
+
+/**
+ *  Maps
+ */
+function initMap() {
+  const sede = {lat: -23.27216515201483, lng: -51.04090160032329}
+  const sicredi = {lat: -23.269944181752592, lng: -51.049487024643085}
+
+  const map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 15,
+    center: sede,
+  });
+  const sedeString =
+    '<div id="content">' +
+    '<div id="siteNotice">' +
+    "</div>" +
+    '<h1 id="firstHeading" class="firstHeading">Sede Be-e</h1>' +
+    '<div id="bodyContent" class="icone">' +
+    '<p><b><i class="bi bi-geo-alt"></i> Av. Pref. Mario de Menezes, 737 - Cepil, Ibiporã - PR, 86200-000</b></p>' +
+    "</div>" +
+    "</div>";
+  const infowindowSede = new google.maps.InfoWindow({
+    content: sedeString
+  });
+
+  const sicrediString =
+  '<div id="content">' +
+  '<div id="siteNotice">' +
+  "</div>" +
+  '<h1 id="firstHeading" class="firstHeading">Sicredi</h1>' +
+  '<div id="bodyContent" class="icone">' +
+  '<p><b><i class="bi bi-geo-alt"></i> Av. Santos Dumont, 242 - Centro, Ibiporã - PR, 86200-970</b></p>' +
+  "</div>" +
+  "</div>";
+const infowindowSicredi = new google.maps.InfoWindow({
+  content: sicrediString
+});
+
+  const markerSede = new google.maps.Marker({
+    position: sede,
+    map,
+    title: "Sede",
+  });
+
+  markerSede.addListener("click", () => {
+    infowindowSede.open({
+      anchor: markerSede,
+      map,
+    });
+  });
+
+  markerSede.addListener("click", () => {
+    infowindowSicredi.close({
+      anchor: markerSede,
+      map,
+    });
+  });
+
+  const markerSicredi = new google.maps.Marker({
+    position: sicredi,
+    map,
+    title: "Sicredi",
+  });
+
+  markerSicredi.addListener("click", () => {
+    infowindowSicredi.open({
+      anchor: markerSicredi,
+      map,
+    });
+  });
+
+  markerSicredi.addListener("click", () => {
+    infowindowSede.close({
+      anchor: markerSicredi,
+      map,
+    });
+  });
+}
+
+window.initMap = initMap;

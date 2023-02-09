@@ -870,13 +870,10 @@ section {
 
 /* Google Maps
 ---------------------------------*/
-@media (max-width: 412px) {
-div .maps iframe {
-  width: 400px;  
-  height: 450px;
-  position: relative;
-  right: 6px;
-}
+#map {
+height: 700px;
+width: 100%;
+
 }
 
 /* Contact Section
